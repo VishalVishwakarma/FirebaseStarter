@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Get UI Elements
-
         mConditionTextView = (TextView)findViewById(R.id.textViewCondition);
 
     }

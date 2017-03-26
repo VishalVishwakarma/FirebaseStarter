@@ -3,6 +3,8 @@ package com.example.vishal.firebasestarter;
 import android.support.annotation.StringDef;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -14,6 +16,8 @@ import com.google.firebase.database.ValueEventListener;
 public class MainActivity extends AppCompatActivity {
 
     TextView mConditionTextView;
+    Button mButtonSunny;
+    Button mButtonFoggy;
 
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
     DatabaseReference conditionRef = mRootRef.child("condition");
@@ -25,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
 
         // Get UI Elements
         mConditionTextView = (TextView)findViewById(R.id.textViewCondition);
+        mButtonSunny = (Button)findViewById(R.id.buttonSunny);
+        mButtonFoggy = (Button)findViewById(R.id.buttonFoggy);
 
     }
 
@@ -42,6 +48,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
+            }
+        });
+
+        mButtonSunny.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                conditionRef.setValue("Sunny");
+            }
+        });
+
+        mButtonFoggy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                conditionRef.setValue("Foggy");
             }
         });
     }
